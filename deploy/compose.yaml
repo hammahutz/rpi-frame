@@ -1,0 +1,14 @@
+services:
+  rpi-frame:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: rpi-frame
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8085:3000"
+    volumes:
+      - ./photos:/photos:ro
+    environment:
+      PHOTO_DIR: /photos
+      RUST_LOG: info
